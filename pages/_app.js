@@ -64,20 +64,29 @@ export default function App({ Component, pageProps }) {
      <div className="real-tors">
   <p className="real-tors__text">سه مالک برتر</p>
   <div className="real-tors__list">
+    <div className="real-tors__menu">
     <img src="/img/realtor-1.jpeg" alt="مهدی ایلخانی نسب" />
     <div className="real-tors__main">
       <h3>مهدی ایلخانی نسب</h3>
       <p>869 فروش خانه</p>
     </div>
+      
+    </div>
+    <div className="real-tors__menu">
     <img src="/img/realtor-2.jpeg" alt="کوثر بهشتی" />
     <div className="real-tors__main">
       <h3>کوثر بهشتی</h3>
       <p>243 فروش خانه</p>
     </div>
+      
+    </div>
+    <div className="real-tors__menu">
     <img src="/img/realtor-3.jpeg" alt="عرشیا احسنی" />
     <div className="real-tors__main">
       <h3>عرشیا احسنی</h3>
       <p>130 فروش خانه</p>
+    </div>
+      
     </div>
   </div>
 </div>
