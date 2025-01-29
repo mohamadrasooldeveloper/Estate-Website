@@ -1,14 +1,15 @@
 import "@/styles/globals.css";
+import Link from "next/link";
 
 export default function App({ Component, pageProps }) {
   // return <Component {...pageProps} />
 
   return (
     <div className="container">
-    <div class="Sidebar">
+    <div className="Sidebar">
   <input type="checkbox" id="sidebar__input" class="sidebar__input" />
   <label for="sidebar__input" class="sidebar__label">
-    <div class="Sidebar_menu"></div>
+    <div className="Sidebar_menu"></div>
   </label>
   <div className="Sidebar_bg"></div>
   <ul className="Sidebar__list">
@@ -42,8 +43,7 @@ export default function App({ Component, pageProps }) {
     </li>
   </ul>
     </div>
-     
-     <Component {...pageProps} />
+     {/* header */}
      <header className="header">
       <div className="header__right">
         <div className="header__right-main">
@@ -89,7 +89,40 @@ export default function App({ Component, pageProps }) {
       
     </div>
   </div>
-</div>
+    </div>
+
+    <Component {...pageProps} />
+
+
+    {/* footer */}
+
+    
+
+<footer className="footer">
+  <ul className="footer__link">
+    <li className="footer__item">
+      <Link href="/dream-home">خانه رویایی خود را پیدا کنید</Link>
+    </li>
+    <li className="footer__item">
+      <Link href="/proposal-request">درخواست پروپوزال</Link>
+    </li>
+    <li className="footer__item">
+      <Link href="/rental-program">برنامه اجاره خانه ها</Link>
+    </li>
+    <li className="footer__item">
+      <Link href="/contact-us">با ما تماس بگیرید</Link>
+    </li>
+    <li className="footer__item">
+      <Link href="/submit-property">ملک خود را ارسال کنید</Link>
+    </li>
+    <li className="footer__item">
+      <Link href="/careers">با ما کار کنید</Link>
+    </li>
+  </ul>
+  <p>
+    © حقوق مادی معنوی این سایت برای<strong> مهدی ایلخانی نسب </strong> محفوظ می‌باشد
+  </p>
+</footer>
 
     </div>
 

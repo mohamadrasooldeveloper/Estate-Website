@@ -10,6 +10,7 @@ body {
   min-height: 100vh;
   max-width: 100%;
   direction: rtl;
+  
 }
 
 :root {
@@ -260,6 +261,63 @@ body {
   color: var(--color-gray-light-2);
 }
 
+/* end header */
+
+.footer {
+  grid-column: full-start / full-end; /* فوتر کل عرض صفحه را می‌پوشاند */
+  grid-row: 2; /* فوتر در ردیف دوم قرار می‌گیرد */
+  background-color: var(--color-secondry);
+  padding: 2rem;
+  text-align: center;
+  margin-top: auto;
+  width: 129%;
+  height: 200px;
+}
+.footer__link{
+  list-style-type: none;
+  color: var(--color-white);
+  display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 20px;
+    font-size: 20px;
+}
+.footer__item {
+  position: relative;
+  display: inline-block;
+}
+
+.footer__item a {
+  position: relative;
+  display: inline-block; /* این باعث می‌شود که اندازه بگیرد */
+  text-decoration: none;
+  color: var(--color-white);
+  padding: 0.5rem 1rem; /* اندازه مناسب برای نمایش افکت */
+  overflow: hidden; /* از خروج افکت از محدوده لینک جلوگیری می‌کند */
+}
+
+.footer__item a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%; /* از بیرون راست شروع شود */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.3); /* رنگ خاکستری */
+  transition: right 0.4s ease-in-out;
+  z-index: 0; /* باعث می‌شود روی لینک دیده شود */
+}
+
+.footer__item a:hover::before {
+  right: 0; /* هنگام هاور، پس‌زمینه به سمت چپ بیاید */
+}
+
+.footer p{
+    margin-top: 50px;
+    color: var(--color-white);
+    font-size: 20px;
+    text-align: center;
+}
 
 
 
@@ -267,7 +325,9 @@ body {
 
 
 
-@media (max-width:520px) {
+
+
+@media (max-width:550px) {
   .Sidebar__list{
     right: 12%;
   }
@@ -300,6 +360,9 @@ body {
   .real-tors__menu h3 , .real-tors__menu p{
       font-size: 1rem;
   }
+  .footer__link{
+    font-size: 16px;
+  }
   
 }
 @media (min-width:768px) {
@@ -312,13 +375,16 @@ body {
   }
   
 }
-@media (min-width:768px) and (max-width:1020px) {
+@media (min-width:760px) and (max-width:1030px) {
   .Sidebar__list{
     right: 40%;
   }
   .header__logo {
     margin-bottom: 1rem;
   }
+  .header__right-main h1 {
+    margin-bottom: 1rem;
+}
   .real-tors__list{
     display: flex;
     flex-direction: row;
@@ -333,28 +399,67 @@ body {
 .seeon__text{
   margin-top: 2rem;
 }
+.footer__link{
+  font-size: 18px;
+}
 
   
 }
 
-@media (min-width:1020px) {
-  .Sidebar__list{
+@media (min-width: 1030px) {
+  .Sidebar__list {
     right: 40%;
   }
-  .container{
-    display: flex;
-    flex-direction: row;
-    
+
+  .container {
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto; /* محتوا در ردیف اول، فوتر در ردیف دوم */
+    grid-template-columns: [sidebar-start] 4.5rem [sidebar-end full-start] 1fr [content-end full-end];
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh; /* کل ارتفاع صفحه */
   }
+
   .Sidebar {
-    width: 5rem;
-    height: 100vh;
     background-color: var(--color-primary);
+    grid-row: 1 / 3; /* پوشش کل ارتفاع صفحه (محتوا + فوتر) */
+    grid-column: sidebar-start / sidebar-end;
     z-index: 99;
   }
-  
+
+  .header {
+    background-image: linear-gradient(
+        var(--color-secondry-light),
+        var(--color-secondry-light)
+      ),
+      url(/img/gal-4.jpeg);
+    background-size: cover;
+    background-position: center;
+    grid-column: full-start / content-end;
+    grid-row: 1; /* هدر فقط در ردیف اول */
+    padding: 8rem;
+    display: grid;
+    grid-template-rows: 1fr min-content 1fr 1fr;
+    grid-row-gap: 1.5rem;
+    width: 100%;
+  }
+
+  .real-tors {
+    background-color: var(--color-secondry);
+    grid-column: content-end / full-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.5rem;
+    width: 100%;
+    padding: 30px;
+  }
+ 
 }
-@media (max-width:1020px) {
+
+@media (max-width:1030px) {
   .container{
     display: flex;
     flex-direction: column;
@@ -376,6 +481,18 @@ body {
   .real-tors{
     width: 100%;
     height: 400px;
+  }
+  .footer{
+    width: 100%;
+    height: auto;
+  }
+  .footer__link{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer p{
+    font-size: 13px;
   }
   
 }
