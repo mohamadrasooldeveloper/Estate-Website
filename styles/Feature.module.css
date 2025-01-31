@@ -2,8 +2,8 @@
     grid-column: center-start / center-end;
     margin: 8rem;
     padding: 6rem 0;
-      display: grid; /* والد را به grid تبدیل کنید */
-      grid-template-columns: repeat(4, 1fr); /* ۴ ستون برابر */
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
       grid-gap: 2rem;
 }
 
@@ -38,15 +38,15 @@
     max-width: 250px;
 }
 
-/* 📌 نمایش ریسپانسیو برای صفحه‌های کوچکتر */
+
 @media (max-width: 1024px) {
     .features {
-        grid-template-columns: repeat(2, 1fr); /* دو ستونی در تبلت */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 600px) {
     .features {
-        grid-template-columns: 1fr; /* تک‌ستونی در موبایل */
+        grid-template-columns: 1fr;
     }
 }
