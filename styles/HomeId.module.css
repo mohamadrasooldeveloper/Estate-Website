@@ -1,0 +1,116 @@
+.Error{
+    font-size: 25px;
+    color: red;
+}
+.home_details , .Error{
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%; 
+    max-width: 1400px;
+    grid-column: center-start / center-end;
+    padding: 0 4rem;
+}
+.home_img img {
+    width: 100%;
+}
+.home__details_top {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 2rem; 
+    width: 100%;
+}
+.home__review_top h2{
+    font-size: 2.4rem;
+}
+
+.home__interduce {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    gap: 1.5rem;
+    position: relative;
+}
+.home__interduce h1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 2.4rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem;
+    margin-bottom: 20px;
+}
+.green_tag, .brown_tag{
+    padding: 5px 16px;
+}
+.green_tag{
+    background-color: #61ce70;
+    color: #fff;
+}
+
+.brown_tag{
+    background-color: var(--color-primary);
+    color: #fff;
+}
+.home__review_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.HomeDetails__line{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #333;
+}
+.home__review_bottom {
+    gap: 1rem;
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.home__details_bottom span{
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.home__details_description{
+    position: relative;
+}
+.home__details_description p {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 767px) {
+    .home_details {
+        padding: 0 4rem;
+    }
+
+    .home__details_top {
+        flex-direction: column;
+    }
+    .home_img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .tags {
+        justify-content: center;
+    }
+    .home__review_bottom{
+        font-size: 1.5rem;
+    }
+}

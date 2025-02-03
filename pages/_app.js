@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
         <div className="sidebar__bg"></div>
         <ul className="list">
           <li className="list__item">
-            <a href="index.html" className="list__link">
+            <a href="/" className="list__link">
               صفحه اصلی
             </a>
           </li>
