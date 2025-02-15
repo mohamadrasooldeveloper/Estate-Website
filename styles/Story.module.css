@@ -3,7 +3,6 @@
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 100vh; 
-    gap: 2rem;
     box-sizing: border-box;
 }
 
