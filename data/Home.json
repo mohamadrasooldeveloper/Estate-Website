@@ -1,0 +1,10 @@
+
+[
+    { "name": "سویت", "rooms": 5, "area": 210, "price": 500000, "imageUrl": "property1.jpg", "demand": 100 },
+    { "name": "خانه اجاره‌ای", "rooms": 1, "area": 180, "price": 2500000, "imageUrl": "property2.jpg", "demand": 200 },
+    { "name": "خانه فروشی", "rooms": 2, "area": 98, "price": 3000000, "imageUrl": "property3.jpg", "demand": 50 },
+    { "name": "خانه ویلایی", "rooms": 6, "area": 250, "price": 2000000, "imageUrl": "property4.jpg", "demand": 300 },
+    { "name": "واحد آپارتمان", "rooms": 2, "area": 150, "price": 800000, "imageUrl": "property5.jpg", "demand": 80 },
+    { "name": "باغ", "rooms": 8, "area": 290, "price": 1200000, "imageUrl": "property6.jpg", "demand": 120 }
+  ]
+  

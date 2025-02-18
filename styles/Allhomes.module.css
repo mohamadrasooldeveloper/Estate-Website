@@ -1,0 +1,50 @@
+.container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;  /* مرکز کردن کانتینر */
+    padding: 0 15px; /* فاصله از حاشیه */
+    display: block; /* اطمینان از مرکز شدن */
+    box-sizing: border-box; /* اطمینان از اینکه padding و border در ابعاد لحاظ می‌شوند */
+  }
+  
+  
+  .Allhomes_filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px; 
+    margin-bottom: 20px; 
+  }
+  
+  /* .filters: استایل برای هر فیلتر به صورت جداگانه */
+  .filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+  }
+  
+  /* برای موبایل و صفحه‌های کوچک‌تر */
+  @media (max-width: 768px) {
+    .Allhomes_filter {
+      flex-direction: column; /* فیلترها را به صورت عمودی برای صفحات کوچک‌تر نمایش می‌دهیم */
+      align-items: flex-start; /* فیلترها به سمت چپ قرار می‌گیرند */
+    }
+  
+    .filters {
+      width: 100%; /* عرض فیلترها به 100% تغییر می‌کند */
+      margin-bottom: 15px; /* فاصله‌گذاری از فیلترهای دیگر */
+    }
+  
+    /* کانتینر به اندازه 100% صفحه کوچک‌تر تنظیم می‌شود */
+    .container {
+      padding: 0 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .filters {
+      width: 100%; /* برای صفحه‌های موبایلی بسیار کوچک */
+    }
+  }
+  
