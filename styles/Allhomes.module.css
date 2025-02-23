@@ -27,7 +27,31 @@
   height: 45px;
   border-radius: 6px;
 }
-  
+.Allhomes_card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.propertyCards{
+  grid-column: center-start / center-end;
+    margin: 8rem;
+    padding: 6rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+} 
+.btn_homes{
+  background-color: var(--color-primary);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 250ms ease-in-out ;
+}
+.btn_homes:hover{
+  background-color: var( --color-primary-dark);
+}
   
   @media (max-width: 768px) {
     .Allhomes_filter {

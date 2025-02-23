@@ -1,3 +1,6 @@
+.home_page{
+    grid-column: center-start / center-end;
+}
 .properties_list {
     grid-column: center-start / center-end;
     margin: 8rem;
@@ -15,6 +18,14 @@
     border-radius: 5px;
     width: 300px;
     position: relative;
+    cursor: pointer;
+    overflow: hidden; /* برای جلوگیری از بیرون زدن محتوا */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* سایه اولیه */
+    transition: all 300ms ease-in-out;
+}
+.property_card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
 }
 
 .property_image {
@@ -76,4 +87,9 @@
   
 .view-button:hover {
     background: #c58b56;
+}
+@media (max-width: 768px) {
+    .properties_list {
+        grid-template-columns: 1fr;
+    }
 }

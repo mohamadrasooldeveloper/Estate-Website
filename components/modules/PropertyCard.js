@@ -1,56 +1,38 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Style from "@/styles/HomePage.module.css";
-import Home from "@/data/Home"; // فرض بر این است که داده‌ها از اینجا می‌آید
 
-const PropertyCard = ({ name, rooms, area, price, imageUrl }) => {
+const PropertyCard = ({ title, roomCount, meterage, price, img, id }) => {
+  if (!id) console.warn("PropertyCard: id is missing");
+
   return (
     <div className={Style.property_card}>
-      <img src={imageUrl} alt={name} className={Style.property_image} />
+  <Image
+        src={img}
+        alt={name} 
+        className={Style.property_image}
+        width={400}
+        height={300} 
+        layout="responsive" 
+      />
       <div className={Style.property_info}>
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <div className={Style.property_main}>
-        <div className={Style.property_location}>
-        <p>📍 مالدیو</p>
-        <p> {rooms} اتاق </p>
-
+          <div className={Style.property_location}>
+            <p>📍 مالدیو</p>
+            <p>{roomCount} اتاق</p>
+          </div>
+          <div className={Style.property_price}>
+            <p>{meterage} متر مربع</p>
+            <p className={Style.price}>💰 {price.toLocaleString("fa-IR")} تومان</p>
+          </div>
         </div>
-
-        <div className={Style.property_price}>
-        <p> {area} متر مربع</p>
-        <p className={Style.price}>💰 {price.toLocaleString()} تومان</p>
-
-        </div>
-
-        </div>
-        <button className={Style.view_button}>مشاهده ملک</button>
+        <Link href={id ? `/homes/${id}` : "#"}>
+          <button className={Style.view_button}>مشاهده ملک</button>
+        </Link>
       </div>
     </div>
   );
 };
 
-const HomePage = () => {
-  const [properties, setProperties] = useState([]);
-
-  useEffect(() => {
-    if (Home && Array.isArray(Home)) {
-      setProperties(Home);
-    }
-  }, []);
-
-  return (
-    <div className={Style.home_page}>
-      <h2>🏡 املاک با بیشترین تقاضا</h2>
-      <div className={Style.properties_list}>
-        {properties.slice(0, 8).map((property, index) => (
-          <PropertyCard key={index} {...property} />
-        ))}
-      </div>
-      <Link href="/homes" className={Style.view_all}>
-        مشاهده تمام املاک
-      </Link>
-    </div>
-  );
-};
-
-export default HomePage;
+export default PropertyCard;

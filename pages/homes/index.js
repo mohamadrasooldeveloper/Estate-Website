@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Style from "@/styles/Allhomes.module.css";
 import PropertyCard from "@/components/modules/PropertyCard";
-import Home from "@/data/Home"; // فرض بر این است که داده‌ها از اینجا می‌آید
+import db from "./../../data/db.json";
 
 export default function Index() {
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("-1");
+  const [sort, setSort] = useState("default");
   const [homes, setHomes] = useState([]);
   const [filteredHomes, setFilteredHomes] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
 
   useEffect(() => {
-    if (Home.homes && Array.isArray(Home.homes)) {
-      setHomes(Home.homes);
-      setFilteredHomes(Home.homes);
+    if (db.homes && Array.isArray(db.homes)) { 
+      setHomes(db.homes);
+      setFilteredHomes(db.homes);
     }
   }, []);
 
   useEffect(() => {
+
     let updatedHomes = homes.filter((home) =>
-      home.title.includes(search)
+      home.title.toLowerCase().includes(search.toLowerCase())
     );
 
     switch (sort) {
@@ -38,11 +39,16 @@ export default function Index() {
         break;
     }
 
+    console.log("Final filtered homes:", updatedHomes);
     setFilteredHomes(updatedHomes);
-    setCurrentPage(0); // بازنشانی صفحه به اول بعد از فیلتر کردن
+    setCurrentPage(0);  
+
+    console.log("Search Query:", search);
+    console.log("All Titles:", homes.map((home) => home.title));
   }, [search, sort, homes]);
 
   const totalPages = Math.ceil(filteredHomes.length / itemsPerPage);
+
   const handlePageChange = (index) => setCurrentPage(index);
 
   return (
@@ -54,7 +60,7 @@ export default function Index() {
             value={sort}
             onChange={(e) => setSort(e.target.value)}
           >
-            <option value="-1">انتخاب کنید</option>
+            <option value="default">انتخاب کنید</option>
             <option value="price">بر اساس قیمت</option>
             <option value="room">بر اساس تعداد اتاق</option>
             <option value="meterage">بر اساس اندازه</option>
@@ -69,25 +75,35 @@ export default function Index() {
           />
         </div>
       </div>
+      <div className={Style.Allhomes_card}>
 
+      
       <div className={Style.propertyCards}>
-        {filteredHomes
-          .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
-          .map((home, index) => (
-            <PropertyCard key={index} {...home} />
-          ))}
+        {filteredHomes.length > 0 ? (
+          filteredHomes
+            .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+            .map((home) => <PropertyCard key={home.id} {...home} />)
+        ) : (
+          <p>هیچ خانه‌ای پیدا نشد.</p>
+        )}
       </div>
 
-      <div className={Style.pagination}>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handlePageChange(index)}
-            className={currentPage === index ? Style.active : ""}
-          >
-            {index + 1}
-          </button>
-        ))}
+      {totalPages > 1 && (
+        <div className={Style.pagination}>
+          {Array.from({ length: totalPages }).map((_, index) => (
+           <button
+           key={index}
+           onClick={() => handlePageChange(index)}
+           className={`${Style.btn_homes} ${currentPage === index ? Style.active : ""}`}
+         >
+           {index + 1}
+         </button>
+         
+          ))}
+          
+        </div>
+      
+      )}
       </div>
     </div>
   );
