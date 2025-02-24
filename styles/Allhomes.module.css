@@ -32,7 +32,7 @@
   flex-direction: column;
   align-items: center;
 }
-.propertyCards{
+.propertyCards {
   grid-column: center-start / center-end;
     margin: 8rem;
     padding: 6rem 0;
@@ -48,12 +48,17 @@
   border-radius: 50%;
   cursor: pointer;
   transition: all 250ms ease-in-out ;
+  margin: 0 2px;
 }
 .btn_homes:hover{
   background-color: var( --color-primary-dark);
 }
-  
-  @media (max-width: 768px) {
+@media (max-width: 480px) {
+  .filters {
+    width: 100%; 
+  }
+}
+@media (max-width: 768px) {
     .Allhomes_filter {
       flex-direction: column-reverse;
       align-items: flex-start; 
@@ -71,10 +76,26 @@
       padding: 0 10px;
     }
   }
-  
-  @media (max-width: 480px) {
-    .filters {
-      width: 100%; 
+ 
+ 
+@media (max-width: 900px) {
+    .propertyCards{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
+}
+@media (min-width: 1200px) {
+  .propertyCards {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; 
   }
+}
+
+
   

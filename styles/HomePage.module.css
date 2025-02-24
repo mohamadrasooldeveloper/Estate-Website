@@ -3,7 +3,7 @@
 }
 .properties_list {
     grid-column: center-start / center-end;
-    margin: 8rem;
+    margin: 11rem;
     padding: 6rem 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -90,6 +90,12 @@
 }
 @media (max-width: 768px) {
     .properties_list {
-        grid-template-columns: 1fr;
+        margin: 0 8rem;
+    }
+}
+@media (max-width: 900px) {
+    .properties_list {
+        display: flex;
+        flex-wrap: wrap;
     }
 }

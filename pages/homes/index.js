@@ -9,7 +9,7 @@ export default function Index() {
   const [homes, setHomes] = useState([]);
   const [filteredHomes, setFilteredHomes] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 3;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     if (db.homes && Array.isArray(db.homes)) { 
