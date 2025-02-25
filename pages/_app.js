@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
             </a>
           </li>
           <li className="list__item">
-            <a href="houses.html" className="list__link">
+            <a href="homes" className="list__link">
               خانه ها
             </a>
           </li>

@@ -8,6 +8,7 @@ export default function Index() {
   const [sort, setSort] = useState("default");
   const [homes, setHomes] = useState([]);
   const [filteredHomes, setFilteredHomes] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
 
@@ -19,33 +20,47 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
+    if (search.trim() === "") {
+      setSuggestions([]);
+    } else {
+      const filteredSuggestions = [...new Set(
+        homes
+          .map((home) => home.title)
+          .filter((title) => title.includes(search))
+      )].slice(0, 5); 
+  
+      setSuggestions(filteredSuggestions);
+    }
+  }, [search, homes]);
+  
+  
+  const handleSuggestionClick = (suggestion) => {
+    setSearch(suggestion); 
+    setSuggestions([]); 
+  };
+  
 
+  useEffect(() => {
     let updatedHomes = homes.filter((home) =>
-      home.title.toLowerCase().includes(search.toLowerCase())
+      home.title.toLowerCase().includes(search.toLowerCase()) 
     );
-
+  
     switch (sort) {
       case "price":
-        updatedHomes.sort((a, b) => a.price - b.price);
+        updatedHomes.sort((a, b) => b.price - a.price);
         break;
       case "room":
-        updatedHomes.sort((a, b) => a.roomCount - b.roomCount);
+        updatedHomes.sort((a, b) => b.roomCount - a.roomCount); 
         break;
       case "meterage":
-        updatedHomes.sort((a, b) => a.meterage - b.meterage);
-        break;
-      default:
-        updatedHomes = [...homes];
+        updatedHomes.sort((a, b) => b.meterage - a.meterage);
         break;
     }
-
-    console.log("Final filtered homes:", updatedHomes);
+  
     setFilteredHomes(updatedHomes);
-    setCurrentPage(0);  
-
-    console.log("Search Query:", search);
-    console.log("All Titles:", homes.map((home) => home.title));
+    setCurrentPage(0);
   }, [search, sort, homes]);
+  
 
   const totalPages = Math.ceil(filteredHomes.length / itemsPerPage);
 
@@ -73,7 +88,17 @@ export default function Index() {
             onChange={(e) => setSearch(e.target.value)}
             placeholder="جستجو کنید"
           />
-        </div>
+          {suggestions.length > 0 && (
+            <ul className={Style.suggestionsList}>
+              {suggestions.map((suggestion, index) => (
+                <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
+     </div>
+
       </div>
       <div className={Style.Allhomes_card}>
 

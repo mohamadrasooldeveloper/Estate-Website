@@ -258,7 +258,7 @@ body {
 
 .list {
   position: absolute;
-  top: 10%;
+  top: 3%;
   left: 50%;
   transform: translate(-25%, -50%);
   width: 0;
